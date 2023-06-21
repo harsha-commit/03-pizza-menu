@@ -1,3 +1,15 @@
-Create index.js (webpack expects the entrypoint to be index.js)
+Notes:
+ 1. webpack expects the entrypoint to be index.js
+ 2. Side effect -> happens when you change data outside of the current function
 
-Side effect -> happens when you change data outside of the current function
+ Concepts Learnt from this Project:
+    1. Using Components
+    2. JSX
+    3. JS Logic in Components
+    4. Styling in React
+    5. Passing and Receiving props
+    6. Rendering Lists
+    7. Conditional Rendering
+    8. Destructuring props
+    9. React Fragments
+    10. Setting Classes conditionally
