@@ -1,0 +1,3 @@
+Create index.js (webpack expects the entrypoint to be index.js)
+
+Side effect -> happens when you change data outside of the current function
