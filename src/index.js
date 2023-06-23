@@ -215,11 +215,11 @@ function Order(props) {
             We're open until {props.closeHour}:00. Come Visit Us 🍽️ or Order
             Online 🛵
           </p>
+          <button className="btn">Order</button>
         </>
       ) : (
         <p>We're happy to welcome you between 12:00 and 22:00</p>
       )}
-      <button className="btn">Order</button>
     </div>
   );
 }
