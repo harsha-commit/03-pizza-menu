@@ -159,22 +159,25 @@ function Footer() {
   // React.createElement("footer", null, "We're currently open !!");
 
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [isOpen, setIsOpen] = useState(false);
 
-  const hour = currentTime.getHours();
   const openHour = 12;
   const closeHour = 22;
-  const isOpen = hour >= openHour && hour <= closeHour;
 
   useEffect(() => {
+    // updatind the timer
     setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
+    // updating the time left checker
+    setIsOpen(
+      new Date().getHours() >= openHour && new Date().getHours() <= closeHour
+    );
   }, []);
 
   return (
     <footer className="footer">
       {/* React will NOT RENDER boolean values */}
-
       {isOpen ? (
         <Order currentTime={currentTime} closeHour={closeHour} />
       ) : (
@@ -203,13 +206,19 @@ function Order(props) {
 
   return (
     <div className="order">
-      <p style={{ color: "red" }}>
-        {`Closing In: ${differenceHours} hours ${differenceMinutes} minutes ${differenceSeconds} seconds`}
-      </p>
-      <p>
-        We're open until {props.closeHour}:00. Come Visit Us 🍽️ or Order Online
-        🛵
-      </p>
+      {!(differenceHours < 0 || differenceMinutes < 0 || differenceMs < 0) ? (
+        <>
+          <p style={{ color: "red" }}>
+            {`Closing In: ${differenceHours} hours ${differenceMinutes} minutes ${differenceSeconds} seconds`}
+          </p>
+          <p>
+            We're open until {props.closeHour}:00. Come Visit Us 🍽️ or Order
+            Online 🛵
+          </p>
+        </>
+      ) : (
+        <p>We're happy to welcome you between 12:00 and 22:00</p>
+      )}
       <button className="btn">Order</button>
     </div>
   );
